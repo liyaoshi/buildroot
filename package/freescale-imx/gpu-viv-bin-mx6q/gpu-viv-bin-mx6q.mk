@@ -6,7 +6,7 @@
 
 GPU_VIV_BIN_MX6Q_VERSION = $(FREESCALE_IMX_VERSION)
 GPU_VIV_BIN_MX6Q_SITE    = $(FREESCALE_IMX_MIRROR_SITE)
-GPU_VIV_BIN_MX6Q_SOURCE  = gpu-viv-bin-mx6q-$(GPU_VIV_BIN_MX6Q_VERSION).bin
+GPU_VIV_BIN_MX6Q_SOURCE  = gpu-viv-bin-mx6q-3.5.7-1.0.0-hfp.bin
 
 GPU_VIV_BIN_MX6Q_INSTALL_STAGING = YES
 
@@ -41,17 +41,17 @@ endef
 # in the upstream archive here.
 # Make sure these commands are idempotent.
 define GPU_VIV_BIN_MX6Q_BUILD_CMDS
-	$(SED) 's/defined(LINUX)/defined(__linux__)/g' $(@D)/usr/include/*/*.h
+	$(SED) 's/defined(LINUX)/defined(__linux__)/g' $(@D)-hfp/usr/include/*/*.h
 	for lib in EGL GAL VIVANTE; do \
 		ln -sf lib$${lib}-$(GPU_VIV_BIN_MX6Q_LIB_TARGET).so \
-			$(@D)/usr/lib/lib$${lib}.so; \
+			$(@D)-hfp/usr/lib/lib$${lib}.so; \
 	done
-	ln -sf libGL.so.1.2 $(@D)/usr/lib/libGL.so.1
-	ln -sf libGL.so.1.2 $(@D)/usr/lib/libGL.so
+	ln -sf libGL.so.1.2 $(@D)-hfp/usr/lib/libGL.so.1
+	ln -sf libGL.so.1.2 $(@D)-hfp/usr/lib/libGL.so
 endef
 
 define GPU_VIV_BIN_MX6Q_INSTALL_STAGING_CMDS
-	cp -r $(@D)/usr/* $(STAGING_DIR)/usr
+	cp -r $(@D)-hfp/usr/* $(STAGING_DIR)/usr
 	for lib in egl glesv2 vg; do \
 		$(INSTALL) -m 0644 -D \
 			package/freescale-imx/gpu-viv-bin-mx6q/$${lib}.pc \
@@ -66,7 +66,7 @@ endef
 ifeq ($(BR2_PACKAGE_GPU_VIV_BIN_MX6Q_EXAMPLES),y)
 define GPU_VIV_BIN_MX6Q_INSTALL_EXAMPLES
 	mkdir -p $(TARGET_DIR)/usr/share/examples/
-	cp -r $(@D)/opt/* $(TARGET_DIR)/usr/share/examples/
+	cp -r $(@D)-hfp/opt/* $(TARGET_DIR)/usr/share/examples/
 endef
 endif
 
@@ -75,7 +75,7 @@ endif
 # to the wrong library
 define GPU_VIV_BIN_MX6Q_INSTALL_TARGET_CMDS
 	$(GPU_VIV_BIN_MX6Q_INSTALL_EXAMPLES)
-	cp -a $(@D)/usr/lib $(TARGET_DIR)/usr
+	cp -a $(@D)-hfp/usr/lib $(TARGET_DIR)/usr
 	for lib in EGL GAL VIVANTE; do \
 		for f in $(TARGET_DIR)/usr/lib/lib$${lib}-*.so; do \
 			case $$f in \
