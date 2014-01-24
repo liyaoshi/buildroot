@@ -22,7 +22,7 @@ HOST_ICU_CONF_OPT = \
 	--disable-icuio \
 	--disable-layout \
 	--disable-renaming
-ICU_MAKE = $(MAKE1)
+# ICU_MAKE = $(MAKE1)
 ICU_SUBDIR = source
 HOST_ICU_SUBDIR = source
 
