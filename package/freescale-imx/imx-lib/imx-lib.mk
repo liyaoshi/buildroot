@@ -26,6 +26,11 @@ IMX_LIB_MAKE_ENV = \
 	PLATFORM=$(BR2_PACKAGE_IMX_LIB_PLATFORM) \
 	INCLUDE="$(IMX_LIB_INCLUDE)"
 
+define IMX_LIB_EXTRACT_CMDS
+        (cd $(BUILD_DIR); \
+	                sh $(DL_DIR)/$(IMX_LIB_SOURCE) --force --auto-accept)
+endef
+
 define IMX_LIB_BUILD_CMDS
 	$(IMX_LIB_MAKE_ENV) $(MAKE1) -C $(@D)
 endef
