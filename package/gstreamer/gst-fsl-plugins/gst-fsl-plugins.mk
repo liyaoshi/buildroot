@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-GST_FSL_PLUGINS_VERSION = 3.0.1
+GST_FSL_PLUGINS_VERSION = 3.5.7-1.0.0
 # No official download site from freescale, just this mirror
 GST_FSL_PLUGINS_SITE = http://download.ossystems.com.br/bsp/freescale/source
 
