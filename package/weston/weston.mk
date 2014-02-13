@@ -17,6 +17,7 @@ WESTON_DEPENDENCIES = host-pkgconf wayland libxkbcommon pixman libpng \
 WESTON_AUTORECONF = YES
 
 WESTON_CONF_OPT = \
+	--with-dtddir=$(STAGING_DIR)/usr/share/wayland \
 	--disable-egl \
 	--disable-simple-egl-clients \
 	--disable-xwayland \
