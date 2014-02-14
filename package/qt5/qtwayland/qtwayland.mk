@@ -9,7 +9,7 @@ QTWAYLAND_LICENSE_FILES = COPYING
 
 
 define QTWAYLAND_CONFIGURE_CMDS
-        (cd $(@D); $(HOST_DIR)/usr/bin/qmake)
+        (cd $(@D); PATH=$(HOST_DIR)/usr/bin:$(PATH) $(HOST_DIR)/usr/bin/qmake)
 endef
 
 define QTWAYLAND_BUILD_CMDS
