@@ -167,7 +167,7 @@ define QT5BASE_CONFIGURE_CMDS
 		-examplesdir /usr/lib/qt/examples \
 		-no-rpath \
 		-nomake tests \
-		-device buildroot \
+		-device imx6 \
 		-device-option CROSS_COMPILE="$(CCACHE) $(TARGET_CROSS)" \
 		-device-option BUILDROOT_COMPILER_CFLAGS="$(TARGET_CFLAGS)" \
 		-device-option BUILDROOT_COMPILER_CXXFLAGS="$(TARGET_CXXFLAGS)" \
