@@ -1,0 +1,19 @@
+diff --git a/qtwayland.pro b/qtwayland.pro
+index 3a374a1..a86d1e1 100644
+--- a/qtwayland.pro
++++ b/qtwayland.pro
+@@ -4,10 +4,10 @@ qtCompileTest(xkbcommon)
+ qtCompileTest(wayland_scanner)
+ qtCompileTest(wayland_egl)
+ qtCompileTest(egl)
+-qtCompileTest(brcm_egl)
+-qtCompileTest(glx)
+-qtCompileTest(xcomposite)
+-qtCompileTest(drm_egl_server)
++# qtCompileTest(brcm_egl)
++# qtCompileTest(glx)
++# qtCompileTest(xcomposite)
++# qtCompileTest(drm_egl_server)
+ 
+ load(qt_parts)
+ 
