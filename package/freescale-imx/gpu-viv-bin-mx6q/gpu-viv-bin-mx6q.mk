@@ -24,7 +24,7 @@ ifeq ($(BR2_PACKAGE_XORG7),y)
 GPU_VIV_BIN_MX6Q_DEPENDENCIES = xlib_libXdamage xlib_libXext
 GPU_VIV_BIN_MX6Q_LIB_TARGET = x11
 else
-GPU_VIV_BIN_MX6Q_LIB_TARGET = fb
+GPU_VIV_BIN_MX6Q_LIB_TARGET = wl
 endif
 
 # The archive is a shell-self-extractor of a bzipped tar. It happens
@@ -42,9 +42,13 @@ endef
 # Make sure these commands are idempotent.
 define GPU_VIV_BIN_MX6Q_BUILD_CMDS
 	$(SED) 's/defined(LINUX)/defined(__linux__)/g' $(@D)-beta-hfp/usr/include/*/*.h
-	for lib in EGL GAL VIVANTE; do \
-		ln -sf lib$${lib}-$(GPU_VIV_BIN_MX6Q_LIB_TARGET).so \
-			$(@D)-beta-hfp/usr/lib/lib$${lib}.so; \
+	for vivlib in EGL GAL VIVANTE; do \
+		ln -sf lib$${vivlib}-$(GPU_VIV_BIN_MX6Q_LIB_TARGET).so \
+			$(@D)-beta-hfp/usr/lib/lib$${vivlib}.so; \
+		ln -sf lib$${vivlib}-$(GPU_VIV_BIN_MX6Q_LIB_TARGET).so \
+			$(@D)-beta-hfp/usr/lib/lib$${vivlib}.so.1; \
+		ln -sf lib$${vivlib}-$(GPU_VIV_BIN_MX6Q_LIB_TARGET).so \
+			$(@D)-beta-hfp/usr/lib/lib$${vivlib}.so.1.0; \
 	done
 	ln -sf libGL.so.1.2 $(@D)-beta-hfp/usr/lib/libGL.so.1
 	ln -sf libGL.so.1.2 $(@D)-beta-hfp/usr/lib/libGL.so
