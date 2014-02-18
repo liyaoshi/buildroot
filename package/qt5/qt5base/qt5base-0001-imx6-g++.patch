@@ -1,21 +1,14 @@
-diff -Nru mkspecs/devices/linux-imx6-g++/qmake.conf /home/xihuang/git/github/buildroot/output/build/qt5base-5.2.1/mkspecs/devices/linux-imx6-g++/qmake.conf
---- mkspecs/devices/linux-imx6-g++/qmake.conf	2014-02-02 04:37:37.000000000 +0800
-+++ /home/xihuang/git/github/buildroot/output/build/qt5base-5.2.1/mkspecs/devices/linux-imx6-g++/qmake.conf	2014-02-17 15:40:54.996496331 +0800
-@@ -18,6 +18,7 @@
- 
- EGLFS_PLATFORM_HOOKS_SOURCES = $$PWD/qeglfshooks_imx6.cpp
- 
-+DISTRO_OPTS 	+= hard-float
- QMAKE_INCDIR           += $$[QT_SYSROOT]/usr/include
- QMAKE_LIBDIR           += $$[QT_SYSROOT]/usr/lib
- 
-@@ -27,8 +28,8 @@
+--- mkspecs/devices/linux-imx6-g++/qmake.conf.ori	2014-02-18 09:43:09.233023977 +0800
++++ mkspecs/devices/linux-imx6-g++/qmake.conf	2014-02-18 09:43:56.253024359 +0800
+@@ -26,9 +26,9 @@
+ QMAKE_LIBS_OPENVG      += -lOpenVG -lEGL -lGAL
  
  QMAKE_LFLAGS           += -Wl,-rpath-link,$$[QT_SYSROOT]/usr/lib
- 
+-
 -IMX6_CFLAGS             = -march=armv7-a -mfpu=neon -DLINUX=1 -DEGL_API_FB=1
 -IMX6_CFLAGS_RELEASE     = -O2 $$IMX6_CFLAGS
-+IMX6_CFLAGS             = -march=armv7-a -mfpu=neon  -mcpu=cortex-a9 -DLINUX=1 -DEGL_API_FB=1
++DISTRO_OPTS    		+= hard-float
++IMX6_CFLAGS             = -march=armv7-a -mcpu=cortex-a9 -mfpu=neon -DLINUX=1 -DEGL_API_FB=1
 +IMX6_CFLAGS_RELEASE     = -O3 $$IMX6_CFLAGS
  QMAKE_CFLAGS_RELEASE   += $$IMX6_CFLAGS_RELEASE
  QMAKE_CXXFLAGS_RELEASE += $$IMX6_CFLAGS_RELEASE
