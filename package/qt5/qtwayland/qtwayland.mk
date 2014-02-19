@@ -9,7 +9,14 @@ QTWAYLAND_LICENSE_FILES = COPYING
 
 
 define QTWAYLAND_CONFIGURE_CMDS
-        (cd $(@D); PATH=$(HOST_DIR)/usr/bin:$(PATH) $(HOST_DIR)/usr/bin/qmake)
+        (cd $(@D); \
+	mkdir -p  $(@D)/include/QtWaylandClient/5.2.1/QtWaylandClient/private/ ;\
+	cd  include/QtWaylandClient/5.2.1/QtWaylandClient/private/ ;\
+	ln -s ../../../../../src/client/hardwareintegration/*.h . ; \
+	ln -s ../../../../../src/client/*.h . ;\
+	cd $(@D);	\
+	PATH=$(HOST_DIR)/usr/bin:$(PATH) $(HOST_DIR)/usr/bin/qmake \
+	)
 endef
 
 define QTWAYLAND_BUILD_CMDS
