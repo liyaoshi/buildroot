@@ -6,8 +6,7 @@
 
 FIRMWARE_IMX_VERSION = $(FREESCALE_IMX_VERSION)
 FIRMWARE_IMX_SITE = $(FREESCALE_IMX_MIRROR_SITE)
-# FIRMWARE_IMX_SOURCE = firmware-imx-$(FIRMWARE_IMX_VERSION).bin
-FIRMWARE_IMX_SOURCE = firmware-imx-3.5.7-1.0.0.bin
+FIRMWARE_IMX_SOURCE = firmware-imx-$(FIRMWARE_IMX_VERSION).bin
 FIRMWARE_IMX_LICENSE = Freescale Semiconductor Software License Agreement, \
 	Atheros license (ath6k)
 FIRMWARE_IMX_LICENSE_FILES = licenses/vpu/EULA licenses/ath6k/AR6102/License.txt
@@ -32,7 +31,7 @@ endef
 define FIRMWARE_IMX_INSTALL_TARGET_CMDS
 	mkdir -p $(TARGET_DIR)/lib/firmware
 	for blobdir in $(FIRMWARE_IMX_BLOBS); do \
- 		cp -r  $(BUILD_DIR)/firmware-imx-3.5.7-1.0.0/firmware/$(blobdir) $(TARGET_DIR)/lib/firmware; \
+		cp -r $(@D)/firmware/$${blobdir} $(TARGET_DIR)/lib/firmware; \
 	done
 endef
 
