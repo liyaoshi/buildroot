@@ -32,7 +32,7 @@ endef
 define FIRMWARE_IMX_INSTALL_TARGET_CMDS
 	mkdir -p $(TARGET_DIR)/lib/firmware
 	for blobdir in $(FIRMWARE_IMX_BLOBS); do \
- 		cp -r  $(BUILD_DIR)/firmware-imx-3.5.7-1.0.0/firmware/$(blobdir) $(TARGET_DIR)/lib/firmware; \
+ 		cp -r  $(BUILD_DIR)/firmware-imx-3.5.7-1.0.0/firmware/$${blobdir} $(TARGET_DIR)/lib/firmware; \
 	done
 endef
 
