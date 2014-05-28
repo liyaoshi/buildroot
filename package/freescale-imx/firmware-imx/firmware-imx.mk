@@ -16,7 +16,7 @@ FIRMWARE_IMX_LICENSE_FILES = licenses/vpu/EULA licenses/ath6k/AR6102/License.txt
 # for which a separate license is needed...
 FIRMWARE_IMX_REDISTRIBUTE = NO
 
-FIRMWARE_IMX_BLOBS = ath6k sdma vpu
+FIRMWARE_IMX_BLOBS = sdma vpu
 
 # The archive is a shell-self-extractor of a bzipped tar. It happens
 # to extract in the correct directory (firmware-imx-x.y.z)
