@@ -33,6 +33,8 @@ if [ "$PS1" ]; then
     export EDITOR='/bin/vi'
     export INPUTRC=/etc/inputrc
     export DMALLOC_OPTIONS=debug=0x34f47d83,inter=100,log=logfile
+    export XDG_RUNTIME_DIR=/tmp/weston
+    export XDG_CONFIG_HOME=/etc
 
     ### Some aliases
     alias ps2='ps facux '
