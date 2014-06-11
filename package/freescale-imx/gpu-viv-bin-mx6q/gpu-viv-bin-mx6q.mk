@@ -42,7 +42,7 @@ endef
 # Make sure these commands are idempotent.
 define GPU_VIV_BIN_MX6Q_BUILD_CMDS
 	$(SED) 's/defined(LINUX)/defined(__linux__)/g' $(@D)-beta-hfp/usr/include/*/*.h
-	for vivlib in EGL GAL VIVANTE; do \
+	for vivlib in EGL GAL VIVANTE GLESv2 ; do \
 		ln -sf lib$${vivlib}-$(GPU_VIV_BIN_MX6Q_LIB_TARGET).so \
 			$(@D)-beta-hfp/usr/lib/lib$${vivlib}.so; \
 		ln -sf lib$${vivlib}-$(GPU_VIV_BIN_MX6Q_LIB_TARGET).so \
@@ -60,7 +60,7 @@ define GPU_VIV_BIN_MX6Q_INSTALL_STAGING_CMDS
 		$(INSTALL) -m 0644 -D \
 			package/freescale-imx/gpu-viv-bin-mx6q/$${lib}.pc \
 			$(STAGING_DIR)/usr/lib/pkgconfig/$${lib}.pc; \
-		if [ "$(GPU_VIV_BIN_MX6Q_LIB_TARGET)" != "fb" ]; then \
+		if [ "$(GPU_VIV_BIN_MX6Q_LIB_TARGET)" != "wl" ]; then \
 			$(SED) "s/-DEGL_API_FB=1//" \
 				$(STAGING_DIR)/usr/lib/pkgconfig/$${lib}.pc; \
 		fi; \
