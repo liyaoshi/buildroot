@@ -42,14 +42,17 @@ endef
 # Make sure these commands are idempotent.
 define GPU_VIV_BIN_MX6Q_BUILD_CMDS
 	$(SED) 's/defined(LINUX)/defined(__linux__)/g' $(@D)-beta-hfp/usr/include/*/*.h
-	for vivlib in EGL GAL VIVANTE GLESv2 ; do \
-		ln -sf lib$${vivlib}-$(GPU_VIV_BIN_MX6Q_LIB_TARGET).so \
-			$(@D)-beta-hfp/usr/lib/lib$${vivlib}.so; \
-		ln -sf lib$${vivlib}-$(GPU_VIV_BIN_MX6Q_LIB_TARGET).so \
-			$(@D)-beta-hfp/usr/lib/lib$${vivlib}.so.1; \
-		ln -sf lib$${vivlib}-$(GPU_VIV_BIN_MX6Q_LIB_TARGET).so \
-			$(@D)-beta-hfp/usr/lib/lib$${vivlib}.so.1.0; \
-	done
+
+	ln -sf libEGL-wl.so $(@D)-beta-hfp/usr/lib/libEGL.so
+	ln -sf libEGL-wl.so $(@D)-beta-hfp/usr/lib/libEGL.so.1
+
+	ln -sf libGAL-wl.so $(@D)-beta-hfp/usr/lib/libGAL.so
+
+	ln -sf libGLESv2-wl.so $(@D)-beta-hfp/usr/lib/libGLESv2.so
+	ln -sf libGLESv2-wl.so $(@D)-beta-hfp/usr/lib/libGLESv2.so.2
+
+	ln -sf libVIVANTE-wl.so $(@D)-beta-hfp/usr/lib/libVIVANTE.so
+
 	ln -sf libGL.so.1.2 $(@D)-beta-hfp/usr/lib/libGL.so.1
 	ln -sf libGL.so.1.2 $(@D)-beta-hfp/usr/lib/libGL.so
 endef
