@@ -26,5 +26,11 @@ HOST_ICU_CONF_OPT = \
 ICU_SUBDIR = source
 HOST_ICU_SUBDIR = source
 
+define ICU_RELACE_DATA_FILES
+        cp -f package/icu/icudt53l.dat $(ICU_DIR)/source/data/in
+	endef
+
+ICU_POST_EXTRACT_HOOKS += ICU_RELACE_DATA_FILES
+
 $(eval $(autotools-package))
 $(eval $(host-autotools-package))
