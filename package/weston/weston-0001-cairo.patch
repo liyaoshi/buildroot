@@ -1,0 +1,11 @@
+--- weston-1.5.0.ori/Makefile.am	2014-06-16 09:10:38.569315492 +0800
++++ weston-1.5.0/Makefile.am	2014-06-16 09:23:11.025321607 +0800
+@@ -453,7 +453,7 @@
+ 	$(CLIENT_LIBS)				\
+ 	$(CAIRO_EGL_LIBS)			\
+ 	libshared-cairo.la -lrt -lm
+-libtoytoolkit_la_CFLAGS = $(AM_CFLAGS) $(CLIENT_CFLAGS) $(CAIRO_EGL_CFLAGS)
++libtoytoolkit_la_CFLAGS = $(AM_CFLAGS) $(CLIENT_CFLAGS) $(CAIRO_CFLAGS)
+ 
+ weston_flower_SOURCES = clients/flower.c
+ weston_flower_LDADD = libtoytoolkit.la
