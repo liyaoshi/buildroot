@@ -4,9 +4,9 @@
 #
 ################################################################################
 
-IMX_VPU_VERSION = $(FREESCALE_IMX_VERSION)_beta
+IMX_VPU_VERSION = $(FREESCALE_IMX_VERSION)
 IMX_VPU_SITE    = $(FREESCALE_IMX_MIRROR_SITE)
-IMX_VPU_SOURCE  = imx-vpu-3.10.17-1.0.0_beta.bin
+IMX_VPU_SOURCE  = imx-vpu-3.10.17-1.0.0.bin
 IMX_VPU_LICENSE = LGPLv2.1+
 # No license file included
 

@@ -4,10 +4,10 @@
 #
 ################################################################################
 
-IMX_LIB_VERSION = $(FREESCALE_IMX_VERSION)_beta
+IMX_LIB_VERSION = $(FREESCALE_IMX_VERSION)
 IMX_LIB_SITE    = $(FREESCALE_IMX_MIRROR_SITE)
 # IMX_LIB_SOURCE  = imx-lib-$(IMX_LIB_VERSION).bin
-IMX_LIB_SOURCE  = imx-lib-3.10.17-1.0.0_beta.tar.gz
+IMX_LIB_SOURCE  = imx-lib-3.10.17-1.0.0.tar.gz
 IMX_LIB_LICENSE = LGPLv2.1+
 # No license file included
 
