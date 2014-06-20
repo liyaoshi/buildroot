@@ -26,5 +26,7 @@ for i in /etc/init.d/S??* ;do
 	    ;;
     esac
 done
+export XDG_RUNTIME_DIR=/tmp/weston
+export XDG_CONFIG_HOME=/etc
 
-weston --tty=8
+weston --tty=8 &
