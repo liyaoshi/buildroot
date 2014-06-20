@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-ICU_VERSION = 53.1
+ICU_VERSION = 51.2
 ICU_SOURCE = icu4c-$(subst .,_,$(ICU_VERSION))-src.tgz
 ICU_SITE = http://download.icu-project.org/files/icu4c/$(ICU_VERSION)
 ICU_LICENSE = ICU License
@@ -22,15 +22,9 @@ HOST_ICU_CONF_OPT = \
 	--disable-icuio \
 	--disable-layout \
 	--disable-renaming
-# ICU_MAKE = $(MAKE1)
+ICU_MAKE = $(MAKE1)
 ICU_SUBDIR = source
 HOST_ICU_SUBDIR = source
-
-define ICU_RELACE_DATA_FILES
-        cp -f package/icu/icudt53l.dat $(ICU_DIR)/source/data/in
-endef
-
-ICU_POST_EXTRACT_HOOKS += ICU_RELACE_DATA_FILES
 
 $(eval $(autotools-package))
 $(eval $(host-autotools-package))
