@@ -45,16 +45,24 @@ define GPU_VIV_BIN_MX6Q_BUILD_CMDS
 
 	ln -sf libEGL-wl.so $(@D)/usr/lib/libEGL.so
 	ln -sf libEGL-wl.so $(@D)/usr/lib/libEGL.so.1
+	ln -sf libEGL-wl.so $(@D)/usr/lib/libEGL.so.1.0
 
 	ln -sf libGAL-wl.so $(@D)/usr/lib/libGAL.so
 
 	ln -sf libGLESv2-wl.so $(@D)/usr/lib/libGLESv2.so
 	ln -sf libGLESv2-wl.so $(@D)/usr/lib/libGLESv2.so.2
-
+	ln -sf libGLESv2-wl.so $(@D)/usr/lib/libGLESv2.so.2.0.0
+	
 	ln -sf libVIVANTE-wl.so $(@D)/usr/lib/libVIVANTE.so
 
 	ln -sf libGL.so.1.2 $(@D)/usr/lib/libGL.so.1
 	ln -sf libGL.so.1.2 $(@D)/usr/lib/libGL.so
+
+	rm -rf $(@D)/usr/lib/directfb-1.6-0
+	rm -rf $(@D)/usr/lib/dri
+	rm -rf $(@D)/usr/lib/*fb*
+	rm -rf $(@D)/usr/lib/*x11*
+
 endef
 
 define GPU_VIV_BIN_MX6Q_INSTALL_STAGING_CMDS
