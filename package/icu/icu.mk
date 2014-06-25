@@ -1,6 +1,6 @@
 ################################################################################
 #
-# icu
+# icu custom size from http://apps.icu-project.org/datacustom/ICUData51.html
 #
 ################################################################################
 
@@ -25,6 +25,12 @@ HOST_ICU_CONF_OPT = \
 ICU_MAKE = $(MAKE1)
 ICU_SUBDIR = source
 HOST_ICU_SUBDIR = source
+
+define ICU_RELEAE_DATA_FILES
+	cp -f package/icu/icudt51l.dat $(ICU_DIR)/source/data/in
+endef
+
+ICU_POST_EXTRACT_HOOKS += ICU_RELEAE_DATA_FILES
 
 $(eval $(autotools-package))
 $(eval $(host-autotools-package))
