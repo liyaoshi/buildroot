@@ -1,4 +1,4 @@
-QTWAYLAND_VERSION = 6d038fb664de833725d13ee6b548d85eabf1ff3a
+QTWAYLAND_VERSION = 98dca3b54f52f08117c1e0d3a1b4826ed12ef23f
 QTWAYLAND_SITE = git://gitorious.org/qt/qtwayland.git
 QTWAYLAND_SITE_METHOD = git
 
@@ -10,11 +10,11 @@ QTWAYLAND_LICENSE_FILES = COPYING
 
 define QTWAYLAND_CONFIGURE_CMDS
         (cd $(@D); \
-	mkdir -p  $(@D)/include/QtWaylandClient/5.2.1/QtWaylandClient/private/ ;\
-	cd  include/QtWaylandClient/5.2.1/QtWaylandClient/private/ ;\
-	ln -s ../../../../../src/client/hardwareintegration/*.h . ; \
-	ln -s ../../../../../src/client/*.h . ;\
-	cd $(@D);	\
+       mkdir -p  $(@D)/include/QtWaylandClient/private/ ;\
+       cd  include/QtWaylandClient/private/ ;\
+       ln -s ../../../src/client/hardwareintegration/*.h . ; \
+       ln -s ../../../src/client/*.h . ;\
+       cd $(@D);       \
 	PATH=$(HOST_DIR)/usr/bin:$(PATH) $(HOST_DIR)/usr/bin/qmake \
 	)
 endef
