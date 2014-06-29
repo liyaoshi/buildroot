@@ -30,6 +30,7 @@ endef
 
 define QTWAYLAND_INSTALL_TARGET_CMDS
 	cd $(@D); \
+	cp -arf lib/libQt5WaylandClient.so* $(TARGET_DIR)/usr/lib/ ;\
 	cp -dpfr plugins/platforms/libqwayland-egl.so $(TARGET_DIR)/usr/lib/qt/plugins/platforms
 endef
 

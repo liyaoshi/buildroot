@@ -1,6 +1,6 @@
 ################################################################################
 #
-# icu
+# icu custom size from http://apps.icu-project.org/datacustom/ICUData51.html
 #
 ################################################################################
 
@@ -13,8 +13,8 @@ ICU_LICENSE_FILES = license.html
 ICU_DEPENDENCIES = host-icu
 ICU_INSTALL_STAGING = YES
 ICU_CONFIG_SCRIPTS = icu-config
-ICU_CONF_OPT = --with-cross-build=$(HOST_ICU_DIR)/source --disable-samples  --prefix=/opt/icu \
-		--disable-tests --with-data-packaging=files
+ICU_CONF_OPT = --with-cross-build=$(HOST_ICU_DIR)/source --disable-samples \
+		--disable-tests
 HOST_ICU_CONF_OPT = \
 	--disable-samples \
 	--disable-tests \
@@ -22,15 +22,15 @@ HOST_ICU_CONF_OPT = \
 	--disable-icuio \
 	--disable-layout \
 	--disable-renaming
-# ICU_MAKE = $(MAKE1)
+ICU_MAKE = $(MAKE1)
 ICU_SUBDIR = source
 HOST_ICU_SUBDIR = source
 
-define ICU_RELACE_DATA_FILES
-        cp -f package/icu/icudt53l.dat $(ICU_DIR)/source/data/in
+define ICU_RELEAE_DATA_FILES
+	cp -f package/icu/icudt51l.dat $(ICU_DIR)/source/data/in
 endef
 
-ICU_POST_EXTRACT_HOOKS += ICU_RELACE_DATA_FILES
+ICU_POST_EXTRACT_HOOKS += ICU_RELEAE_DATA_FILES
 
 $(eval $(autotools-package))
 $(eval $(host-autotools-package))

@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-GPU_VIV_BIN_MX6Q_VERSION = $(FREESCALE_IMX_VERSION)
+GPU_VIV_BIN_MX6Q_VERSION = $(FREESCALE_IMX_VERSION)-hfp
 GPU_VIV_BIN_MX6Q_SITE    = $(FREESCALE_IMX_MIRROR_SITE)
 GPU_VIV_BIN_MX6Q_SOURCE  = gpu-viv-bin-mx6q-3.10.17-1.0.0-hfp.bin
 
@@ -41,24 +41,32 @@ endef
 # in the upstream archive here.
 # Make sure these commands are idempotent.
 define GPU_VIV_BIN_MX6Q_BUILD_CMDS
-	$(SED) 's/defined(LINUX)/defined(__linux__)/g' $(@D)-hfp/usr/include/*/*.h
+	$(SED) 's/defined(LINUX)/defined(__linux__)/g' $(@D)/usr/include/*/*.h
 
-	ln -sf libEGL-wl.so $(@D)-hfp/usr/lib/libEGL.so
-	ln -sf libEGL-wl.so $(@D)-hfp/usr/lib/libEGL.so.1
+	ln -sf libEGL-wl.so $(@D)/usr/lib/libEGL.so
+	ln -sf libEGL-wl.so $(@D)/usr/lib/libEGL.so.1
+	ln -sf libEGL-wl.so $(@D)/usr/lib/libEGL.so.1.0
 
-	ln -sf libGAL-wl.so $(@D)-hfp/usr/lib/libGAL.so
+	ln -sf libGAL-wl.so $(@D)/usr/lib/libGAL.so
 
-	ln -sf libGLESv2-wl.so $(@D)-hfp/usr/lib/libGLESv2.so
-	ln -sf libGLESv2-wl.so $(@D)-hfp/usr/lib/libGLESv2.so.2
+	ln -sf libGLESv2-wl.so $(@D)/usr/lib/libGLESv2.so
+	ln -sf libGLESv2-wl.so $(@D)/usr/lib/libGLESv2.so.2
+	ln -sf libGLESv2-wl.so $(@D)/usr/lib/libGLESv2.so.2.0.0
+	
+	ln -sf libVIVANTE-wl.so $(@D)/usr/lib/libVIVANTE.so
 
-	ln -sf libVIVANTE-wl.so $(@D)-hfp/usr/lib/libVIVANTE.so
+	ln -sf libGL.so.1.2 $(@D)/usr/lib/libGL.so.1
+	ln -sf libGL.so.1.2 $(@D)/usr/lib/libGL.so
 
-	ln -sf libGL.so.1.2 $(@D)-hfp/usr/lib/libGL.so.1
-	ln -sf libGL.so.1.2 $(@D)-hfp/usr/lib/libGL.so
+	rm -rf $(@D)/usr/lib/directfb-1.6-0
+	rm -rf $(@D)/usr/lib/dri
+	rm -rf $(@D)/usr/lib/*fb*
+	rm -rf $(@D)/usr/lib/*x11*
+
 endef
 
 define GPU_VIV_BIN_MX6Q_INSTALL_STAGING_CMDS
-	cp -r $(@D)-hfp/usr/* $(STAGING_DIR)/usr
+	cp -r $(@D)/usr/* $(STAGING_DIR)/usr
 	for lib in egl glesv2 vg; do \
 		$(INSTALL) -m 0644 -D \
 			package/freescale-imx/gpu-viv-bin-mx6q/$${lib}.pc \
@@ -73,7 +81,7 @@ endef
 ifeq ($(BR2_PACKAGE_GPU_VIV_BIN_MX6Q_EXAMPLES),y)
 define GPU_VIV_BIN_MX6Q_INSTALL_EXAMPLES
 	mkdir -p $(TARGET_DIR)/usr/share/examples/
-	cp -r $(@D)-hfp/opt/* $(TARGET_DIR)/usr/share/examples/
+	cp -r $(@D)/opt/* $(TARGET_DIR)/usr/share/examples/
 endef
 endif
 
@@ -82,7 +90,7 @@ endif
 # to the wrong library
 define GPU_VIV_BIN_MX6Q_INSTALL_TARGET_CMDS
 	$(GPU_VIV_BIN_MX6Q_INSTALL_EXAMPLES)
-	cp -a $(@D)-hfp/usr/lib $(TARGET_DIR)/usr
+	cp -a $(@D)/usr/lib $(TARGET_DIR)/usr
 	for lib in EGL GAL VIVANTE; do \
 		for f in $(TARGET_DIR)/usr/lib/lib$${lib}-*.so; do \
 			case $$f in \
