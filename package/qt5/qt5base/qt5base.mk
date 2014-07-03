@@ -20,6 +20,7 @@ QT5BASE_INSTALL_STAGING = YES
 #    want to use the one packaged in Buildroot
 QT5BASE_CONFIGURE_OPTS += \
 	-optimized-qmake \
+	-system-proxies \
 	-no-kms \
 	-no-cups \
 	-no-nis \
