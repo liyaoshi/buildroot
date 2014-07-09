@@ -1,0 +1,4 @@
+config BR2_PACKAGE_GSTREAMER_IMX
+	bool "gstreamer-imx"
+	help
+	  http://github.com/freescale/
