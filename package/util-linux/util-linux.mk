@@ -93,8 +93,8 @@ ifeq ($(BR2_PACKAGE_UTIL_LINUX_BINARIES),)
 define UTIL_LINUX_DISABLE_TOOLS
 	$(SED) '/schedutils/d' -e '/text-utils/d' -e '/term-utils/d' \
 		-e '/login-utils/d' -e '/mount-deprecated/d' \
-		-e '/sys-utils/d' -e '/misc-utils/d' -e '/disk-utils/d' \
-		-e '/fdisks/d' $(@D)/Makefile.am
+		-e '/sys-utils/d' -e '/misc-utils/d'  \
+	    $(@D)/Makefile.am	
 endef
 UTIL_LINUX_PRE_PATCH_HOOKS += UTIL_LINUX_DISABLE_TOOLS
 endif
