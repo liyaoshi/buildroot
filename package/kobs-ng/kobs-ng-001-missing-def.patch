@@ -1,11 +1,12 @@
---- bluez-4.101/acinclude.m4	2012-06-23 00:36:49.000000000 +0800
-+++ bluez_utils-4.101.new/acinclude.m4	2014-07-03 15:12:37.605427214 +0800
-@@ -71,7 +71,7 @@
- 	fi
+--- kobs-ng-3.10.17-1.0.0.ori/src/mtd.h	2014-01-16 22:38:15.000000000 +0800
++++ kobs-ng-3.10.17-1.0.0/src/mtd.h	2014-07-14 13:50:27.609109953 +0800
+@@ -31,6 +31,9 @@
+ #include "BootControlBlocks.h"
+ #include "rom_nand_hamming_code_ecc.h"
  
- 	if (test "$localstatedir" = '${prefix}/var'); then
--		storagedir="${prefix}/var/lib/bluetooth"
-+		storagedir="/var/lib/bluetooth"
- 	else
- 		storagedir="${localstatedir}/lib/bluetooth"
- 	fi
++#define MTD_FILE_MODE_NORMAL 0
++#define MTD_FILE_MODE_RAW 3
++
+ //------------------------------------------------------------------------------
+ // Re-definitions of true and false, because the standard ones aren't good
+ // enough?
