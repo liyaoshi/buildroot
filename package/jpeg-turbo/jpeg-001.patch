@@ -1,0 +1,12 @@
+--- jpeg-turbo-1.3.0/djpeg.c	2013-03-23 13:35:37.000000000 +0800
++++ jpeg-turbo-1.3.0.new/djpeg.c	2014-07-22 16:15:15.030797128 +0800
+@@ -279,7 +279,8 @@
+ 
+     } else if (keymatch(arg, "rgb", 2)) {
+       /* Force RGB output. */
+-      cinfo->out_color_space = JCS_RGB;
++//      cinfo->out_color_space = JCS_RGB;
++      cinfo->out_color_space = JCS_EXT_RGBA;
+ 
+     } else if (keymatch(arg, "map", 3)) {
+       /* Quantize to a color map taken from an input file. */
