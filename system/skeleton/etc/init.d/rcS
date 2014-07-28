@@ -28,5 +28,5 @@ for i in /etc/init.d/S??* ;do
 done
 export XDG_RUNTIME_DIR=/tmp/weston
 export XDG_CONFIG_HOME=/etc
-
-weston --tty=1  --idle-time=65536 &
+export FB_MULTI_BUFFER=2
+weston --tty=1 --log=/tmp/weston.log --use-gl=1 --use-gal2d=1 --idle-time=65536 &
