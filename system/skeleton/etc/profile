@@ -35,6 +35,7 @@ if [ "$PS1" ]; then
     export DMALLOC_OPTIONS=debug=0x34f47d83,inter=100,log=logfile
     export XDG_RUNTIME_DIR=/tmp/weston
     export XDG_CONFIG_HOME=/etc
+    export FB_MULTI_BUFFER=2 
 
     ### Some aliases
     alias ps2='ps facux '
