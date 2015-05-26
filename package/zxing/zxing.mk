@@ -12,15 +12,21 @@ ZXING_LICENSE_FILES = COPYING
 ZXING_INSTALL_STAGING = YES
 
 ifneq ($(BR2_ENABLE_LOCALE),y)
+ifeq ($(BR2_PACKAGE_LIBICONV),y)
 ZXING_DEPENDENCIES += libiconv
+else
+# There is no locale support in the toolchain and libiconv
+# is not available so disable iconv support in zxing
+ZING_MAKE_OPTS = CXXFLAGS+="-DNO_ICONV"
+endif
 endif
 
 define ZXING_EXTRACT_CMDS
-	unzip -d $(BUILD_DIR) $(DL_DIR)/$(ZXING_SOURCE)
+	$(UNZIP) -d $(BUILD_DIR) $(DL_DIR)/$(ZXING_SOURCE)
 endef
 
 define ZXING_BUILD_CMDS
-	$(MAKE) -C $(@D)/cpp/core/src $(TARGET_CONFIGURE_OPTS)
+	$(MAKE) -C $(@D)/cpp/core/src $(TARGET_CONFIGURE_OPTS) $(ZING_MAKE_OPTS)
 endef
 
 define ZXING_INSTALL_STAGING_CMDS

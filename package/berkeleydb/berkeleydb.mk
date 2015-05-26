@@ -41,7 +41,6 @@ define BERKELEYDB_CONFIGURE_CMDS
 		--with-pic \
 		--enable-o_direct \
 	)
-	$(SED) 's/\.lo/.o/g' $(@D)/build_unix/Makefile
 endef
 
 ifneq ($(BR2_PACKAGE_BERKELEYDB_TOOLS),y)
@@ -54,14 +53,10 @@ BERKELEYDB_POST_INSTALL_TARGET_HOOKS += BERKELEYDB_REMOVE_TOOLS
 
 endif
 
-ifneq ($(BR2_HAVE_DOCUMENTATION),y)
-
 define BERKELEYDB_REMOVE_DOCS
 	rm -rf $(TARGET_DIR)/usr/docs
 endef
 
 BERKELEYDB_POST_INSTALL_TARGET_HOOKS += BERKELEYDB_REMOVE_DOCS
-
-endif
 
 $(eval $(autotools-package))

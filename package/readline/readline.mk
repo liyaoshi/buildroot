@@ -4,11 +4,13 @@
 #
 ################################################################################
 
-READLINE_VERSION = 6.2
+READLINE_VERSION = 6.3
 READLINE_SITE = $(BR2_GNU_MIRROR)/readline
 READLINE_INSTALL_STAGING = YES
 READLINE_DEPENDENCIES = ncurses
-READLINE_CONF_ENV = bash_cv_func_sigsetjmp=yes
+HOST_READLINE_DEPENDENCIES = host-ncurses
+READLINE_CONF_ENV = bash_cv_func_sigsetjmp=yes \
+	bash_cv_wcwidth_broken=no
 READLINE_LICENSE = GPLv3+
 READLINE_LICENSE_FILES = COPYING
 
@@ -19,3 +21,4 @@ endef
 READLINE_POST_INSTALL_TARGET_HOOKS += READLINE_PURGE_EXAMPLES
 
 $(eval $(autotools-package))
+$(eval $(host-autotools-package))

@@ -1,13 +1,11 @@
 // -*- mode:doc; -*-
 // vim: set syntax=asciidoc:
 
-Infrastructure for LuaRocks-based packages
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Infrastructure for LuaRocks-based packages
 
 [[luarocks-package-tutorial]]
 
-+luarocks-package+ tutorial
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+==== +luarocks-package+ tutorial
 
 First, let's see how to write a +.mk+ file for a LuaRocks-based package,
 with an example :
@@ -22,8 +20,8 @@ with an example :
 07: LUAFOO_VERSION = 1.0.2-1
 08: LUAFOO_DEPENDENCIES = foo
 09:
-10: LUAFOO_BUILD_OPT += FOO_INCDIR=$(STAGING_DIR)/usr/include
-11: LUAFOO_BUILD_OPT += FOO_LIBDIR=$(STAGING_DIR)/usr/lib
+10: LUAFOO_BUILD_OPTS += FOO_INCDIR=$(STAGING_DIR)/usr/include
+11: LUAFOO_BUILD_OPTS += FOO_LIBDIR=$(STAGING_DIR)/usr/lib
 12: LUAFOO_LICENSE = luaFoo license
 13: LUAFOO_LICENSE_FILES = COPYING
 14:
@@ -48,11 +46,10 @@ package to be built.
 
 [[luarocks-package-reference]]
 
-+luarocks-package+ reference
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+==== +luarocks-package+ reference
 
 LuaRocks is a deployment and management system for Lua modules, and supports
-various +build.type+: +builtin+, +make+ and +cmake+. In the contetx of
+various +build.type+: +builtin+, +make+ and +cmake+. In the context of
 Buildroot, the +luarocks-package+ infrastructure only supports the +builtin+
 mode. LuaRocks packages that use the +make+ or +cmake+ build mechanisms
 should instead be packaged using the +generic-package+ and +cmake-package+
@@ -60,7 +57,7 @@ infrastructures in Buildroot, respectively.
 
 The main macro of the LuaRocks package infrastructure is +luarocks-package+:
 like +generic-package+ it works by defining a number of variables providing
-meta informations about the package, and then calling +luarocks-package+. It
+metadata information about the package, and then calling +luarocks-package+. It
 is worth mentioning that building LuaRocks packages for the host is not
 supported, so the macro +host-luarocks-package+ is not implemented.
 
@@ -89,5 +86,5 @@ also defined. They can be overridden in specific cases.
 * +LUAFOO_SUBDIR+, which defaults to
   +luafoo-$(LUAFOO_VERSION_WITHOUT_ROCKSPEC_REVISION)+
 
-* +LUAFOO_BUILD_OPT+ contains additional build options for the
+* +LUAFOO_BUILD_OPTS+ contains additional build options for the
   +luarocks build+ call.

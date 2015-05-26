@@ -6,17 +6,15 @@
 
 DROPWATCH_VERSION = 1.4
 DROPWATCH_SOURCE = dropwatch-$(DROPWATCH_VERSION).tar.xz
-DROPWATCH_SITE = https://git.fedorahosted.org/cgit/dropwatch.git/snapshot/
+DROPWATCH_SITE = https://git.fedorahosted.org/cgit/dropwatch.git/snapshot
 DROPWATCH_DEPENDENCIES = binutils libnl readline host-pkgconf
 DROPWATCH_LICENSE = GPLv2
 DROPWATCH_LICENSE_FILES = COPYING
 
 # libbfd may be linked to libintl
 # Ugly... but LDFLAGS are hardcoded anyway
-#
-# Also: always need to add -liberty to hardcoded LDFLAGS for avr32
 DROPWATCH_LDFLAGS = \
-	$(TARGET_LDFLAGS) -lbfd -liberty -lreadline -lnl-3 -lnl-genl-3 \
+	$(TARGET_LDFLAGS) -lbfd -lreadline -lnl-3 -lnl-genl-3 \
 		-lpthread -lncurses -lm
 
 ifeq ($(BR2_NEEDS_GETTEXT_IF_LOCALE),y)

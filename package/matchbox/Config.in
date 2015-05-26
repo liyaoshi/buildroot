@@ -1,13 +1,19 @@
 config BR2_PACKAGE_MATCHBOX
 	bool "MatchBox Window Manager"
 	depends on BR2_PACKAGE_XORG7
+	depends on BR2_USE_MMU # fork()
 	select BR2_PACKAGE_FONTCONFIG
 	select BR2_PACKAGE_EXPAT
 	select BR2_PACKAGE_XLIB_LIBXEXT
 	select BR2_PACKAGE_XLIB_LIBXDAMAGE
 	select BR2_PACKAGE_XLIB_LIBXCURSOR
 	help
-	  http://projects.o-hand.com/matchbox
+	  Matchbox is an Open Source base environment for the X Window
+	  System running on non-desktop embedded platforms such as
+	  handhelds, set-top boxes, kiosks and anything else for which
+	  screen space, input mechanisms or system resources are limited.
+
+	  http://matchbox-project.org/
 
 if BR2_PACKAGE_MATCHBOX
 
@@ -36,6 +42,7 @@ config BR2_PACKAGE_MATCHBOX_COMMON_PDA
 config BR2_PACKAGE_MATCHBOX_KEYBOARD
 	bool "Matchbox Virtual Keyboard"
 	select BR2_PACKAGE_XLIB_LIBXTST
+	select BR2_PACKAGE_XLIB_LIBXFT if !BR2_PACKAGE_CAIRO
 	help
 	  Virtual Keyboard
 

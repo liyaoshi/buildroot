@@ -1,5 +1,7 @@
 config BR2_PACKAGE_FSWEBCAM
 	bool "fswebcam"
+	depends on BR2_USE_MMU # fork()
+	depends on !BR2_STATIC_LIBS
 	select BR2_PACKAGE_GD
 	select BR2_PACKAGE_FREETYPE
 	select BR2_PACKAGE_JPEG
@@ -14,3 +16,7 @@ config BR2_PACKAGE_FSWEBCAM
 	  scp.
 
 	  http://www.firestorm.cx/fswebcam/
+
+comment "fswebcam needs a toolchain w/ dynamic library"
+	depends on BR2_USE_MMU
+	depends on BR2_STATIC_LIBS

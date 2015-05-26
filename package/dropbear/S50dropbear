@@ -10,19 +10,15 @@ start() {
 	DROPBEAR_ARGS="$DROPBEAR_ARGS -R"
 
 	echo -n "Starting dropbear sshd: "
-	# Make sure dropbear directory exists
-	if [ ! -d /etc/dropbear ] ; then
-		mkdir -p /etc/dropbear
-	fi
 	umask 077
 	start-stop-daemon -S -q -p /var/run/dropbear.pid \
 		--exec /usr/sbin/dropbear -- $DROPBEAR_ARGS
-	[ $? == 0 ] && echo "OK" || echo "FAIL"
+	[ $? = 0 ] && echo "OK" || echo "FAIL"
 }
 stop() {
 	echo -n "Stopping dropbear sshd: "
 	start-stop-daemon -K -q -p /var/run/dropbear.pid
-	[ $? == 0 ] && echo "OK" || echo "FAIL"
+	[ $? = 0 ] && echo "OK" || echo "FAIL"
 }
 restart() {
 	stop

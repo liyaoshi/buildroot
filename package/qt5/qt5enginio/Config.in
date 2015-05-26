@@ -10,4 +10,8 @@ config BR2_PACKAGE_QT5ENGINIO
 
 	  This package corresponds to the qt5enginio module.
 
+<<<<<<< HEAD
 	  http://qt-project.org
+=======
+	  http://qt.io
+>>>>>>> remotes/buildroot/master

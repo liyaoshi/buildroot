@@ -8,4 +8,8 @@ config BR2_PACKAGE_QT5WEBSOCKETS
 
 	  This package corresponds to the qt5websockets module.
 
+<<<<<<< HEAD
 	  http://qt-project.org
+=======
+	  http://qt.io
+>>>>>>> remotes/buildroot/master
