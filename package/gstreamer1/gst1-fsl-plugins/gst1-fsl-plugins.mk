@@ -6,6 +6,7 @@
 
 GST1_FSL_PLUGINS_VERSION = 4.0.3
 GST1_FSL_PLUGINS_SITE = $(FREESCALE_IMX_SITE)
+GST1_FSL_PLUGINS_SOURCE = gst1.0-fsl-plugins-4.0.3.tar.gz
 
 # Most is LGPLv2+, but some sources are copied from upstream and are
 # LGPLv2.1+, which essentially makes it LGPLv2.1+
@@ -15,7 +16,7 @@ GST1_FSL_PLUGINS_LICENSE_FILES = COPYING-LGPL-2.1 COPYING-LGPL-2
 GST1_FSL_PLUGINS_INSTALL_STAGING = YES
 GST1_FSL_PLUGINS_AUTORECONF = YES
 
-GST1_FSL_PLUGINS_DEPENDENCIES += host-pkgconf gstreamer gst-plugins-base \
+GST1_FSL_PLUGINS_DEPENDENCIES += host-pkgconf gstreamer1 gst1-plugins-base \
 	libfslvpuwrap imx-lib imx-vpu libfslparser libfslcodec
 
 GST1_FSL_PLUGINS_CONF_ENV = \
