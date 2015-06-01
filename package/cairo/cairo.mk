@@ -70,7 +70,9 @@ endif
 
 CAIRO_CONF_OPTS = \
 	--enable-trace=no \
-	--enable-interpreter=no
+	--enable-interpreter=no \
+        egl_CFLAGS="-DLINUX=1 -DEGL_API_FB -DEGL_API_WL" \
+        glesv2_CFLAGS="-DLINUX=1 -DEGL_API_FB -DEGL_API_WL" \
 
 CAIRO_DEPENDENCIES = host-pkgconf fontconfig pixman
 

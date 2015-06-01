@@ -34,6 +34,9 @@ else
 GST1_FSL_PLUGINS_CONF_OPTS += --disable-x11
 endif
 
+GST1_FSL_PLUGINS_CONF_OPTS +=  --enable-overlaysink --disable-wma8enc
+GST1_FSL_PLUGINS_CONF_OPTS += "PLATFORM=MX6"
+
 # Autoreconf requires an m4 directory to exist
 define GST1_FSL_PLUGINS_PATCH_M4
 	mkdir -p $(@D)/m4
