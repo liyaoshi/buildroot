@@ -34,7 +34,7 @@ else
 GST1_FSL_PLUGINS_CONF_OPTS += --disable-x11
 endif
 
-GST1_FSL_PLUGINS_CONF_OPTS +=  --enable-overlaysink --disable-wma8enc
+GST1_FSL_PLUGINS_CONF_OPTS +=  --enable-overlaysink --disable-wma8enc --disable-mp3enc
 GST1_FSL_PLUGINS_CONF_OPTS += "PLATFORM=MX6"
 
 # Autoreconf requires an m4 directory to exist

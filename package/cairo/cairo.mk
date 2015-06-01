@@ -11,7 +11,7 @@ CAIRO_LICENSE_FILES = COPYING
 CAIRO_SITE = http://cairographics.org/releases
 CAIRO_INSTALL_STAGING = YES
 CAIRO_AUTORECONF = YES
-
+CAIRO_DEPENDENCIES = jpeg libpng libgles
 CAIRO_CONF_ENV = \
 	ac_cv_func_posix_getpwuid_r=yes \
 	glib_cv_stack_grows=no \
