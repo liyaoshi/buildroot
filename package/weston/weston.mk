@@ -52,7 +52,11 @@ WESTON_CONF_OPTS += --enable-rpi-compositor \
 	--disable-simple-egl-clients \
 	WESTON_NATIVE_BACKEND=rpi-backend.so
 else
-WESTON_CONF_OPTS += --disable-rpi-compositor
+WESTON_CONF_OPTS += --disable-rpi-compositor \
+	EGL_CFLAGS=" -DLINUX=1 -DEGL_API_FB -DEGL_API_WL" \
+	EGL_TESTS_CFLAGS=" -DLINUX=1 -DEGL_API_FB -DEGL_API_WL" \
+           WESTON_NATIVE_BACKEND="fbdev-backend.so"
+
 endif # BR2_PACKAGE_WESTON_RPI
 
 $(eval $(autotools-package))
