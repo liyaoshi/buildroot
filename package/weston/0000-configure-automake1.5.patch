@@ -1,0 +1,11 @@
+--- weston-1.6.0.bak/configure	2014-09-19 18:40:52.000000000 +0800
++++ weston-1.6.0/configure	2015-06-02 13:58:53.291473351 +0800
+@@ -4269,7 +4269,7 @@
+ fi
+ 
+ 
+-am__api_version='1.13'
++am__api_version='1.15'
+ 
+ # Find a good install program.  We prefer a C program (faster),
+ # so one script is as good as another.  But avoid the broken or
