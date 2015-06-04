@@ -15,13 +15,13 @@ WESTON_DEPENDENCIES = host-pkgconf wayland libxkbcommon pixman libpng \
 
 WESTON_CONF_OPTS = \
 	--with-dtddir=$(STAGING_DIR)/usr/share/wayland \
-	--disable-simple-egl-clients \
 	--disable-xwayland \
 	--disable-x11-compositor \
 	--disable-drm-compositor \
-	--disable-wayland-compositor \
 	--disable-headless-compositor \
 	--disable-weston-launch \
+	--with-cairo=glesv2 \
+	--with-cairo-glesv2 \
 	--disable-colord
 
 ifeq ($(BR2_PACKAGE_LIBUNWIND),y)
@@ -54,9 +54,14 @@ WESTON_CONF_OPTS += --enable-rpi-compositor \
 else
 WESTON_CONF_OPTS += --disable-rpi-compositor \
 	EGL_CFLAGS=" -DLINUX=1 -DEGL_API_FB -DEGL_API_WL" \
+	SIMPLE_EGL_CLIENT_CFLAGS=" -DLINUX=1 -DEGL_API_FB -DEGL_API_WL" \
+	CLIENT_CFLAGS=" -DLINUX=1 -DEGL_API_FB -DEGL_API_WL" \
 	EGL_TESTS_CFLAGS=" -DLINUX=1 -DEGL_API_FB -DEGL_API_WL" \
+	EGL_LIBS="-lGAL -lEGL -lGLESv2 -lEGL-wl" \
+	EGL_TESTS_LIBS="-lGAL -lEGL -lGLESv2 -lEGL-wl" \
            WESTON_NATIVE_BACKEND="fbdev-backend.so"
 
 endif # BR2_PACKAGE_WESTON_RPI
+
 
 $(eval $(autotools-package))
