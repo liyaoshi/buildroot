@@ -1,5 +1,5 @@
---- weston-1.6.0.ori/Makefile.am	2015-06-04 14:11:35.412126696 +0800
-+++ weston-1.6.0/Makefile.am	2015-06-04 14:30:43.220131017 +0800
+--- weston-1.6.0.ori/Makefile.am	2015-06-04 14:34:20.296131834 +0800
++++ weston-1.6.0/Makefile.am	2015-06-04 14:35:42.404132143 +0800
 @@ -468,11 +468,11 @@
  	$(CLIENT_LIBS)				\
  	$(CAIRO_EGL_LIBS)			\
@@ -83,6 +83,15 @@
  
  weston_stacking_SOURCES = clients/stacking.c
  weston_stacking_LDADD = libtoytoolkit.la
+@@ -552,7 +552,7 @@
+ 	shared/matrix.c					\
+ 	shared/matrix.h
+ weston_calibrator_LDADD = libtoytoolkit.la
+-weston_calibrator_CFLAGS = $(AM_CFLAGS) $(CLIENT_CFLAGS)
++weston_calibrator_CFLAGS = $(AM_CFLAGS) $(CLIENT_CFLAGS) ${CAIRO_CFLAGS}
+ 
+ if BUILD_SUBSURFACES_CLIENT
+ demo_clients += weston-subsurfaces
 @@ -581,14 +581,14 @@
  	protocol/input-method-protocol.c		\
  	protocol/input-method-client-protocol.h
