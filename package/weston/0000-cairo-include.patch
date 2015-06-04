@@ -1,5 +1,5 @@
---- weston-1.6.0.ori/Makefile.am	2015-06-04 14:34:20.296131834 +0800
-+++ weston-1.6.0/Makefile.am	2015-06-04 14:35:42.404132143 +0800
+--- weston-1.6.0/Makefile.am	2015-06-04 15:00:03.688137644 +0800
++++ weston-1.6.0.new/Makefile.am	2015-06-04 14:58:43.944137344 +0800
 @@ -468,11 +468,11 @@
  	$(CLIENT_LIBS)				\
  	$(CAIRO_EGL_LIBS)			\
@@ -14,7 +14,7 @@
  
  weston_screenshooter_SOURCES =				\
  	clients/screenshot.c
-@@ -480,34 +480,34 @@
+@@ -480,45 +480,45 @@
  	protocol/screenshooter-protocol.c		\
  	protocol/screenshooter-client-protocol.h
  weston_screenshooter_LDADD = $(CLIENT_LIBS) libshared.la
@@ -56,7 +56,20 @@
  
  weston_scaler_SOURCES = clients/scaler.c
  weston_scaler_LDADD = libtoytoolkit.la
-@@ -527,22 +527,22 @@
+-weston_scaler_CFLAGS = $(AM_CFLAGS) $(CLIENT_CFLAGS)
++weston_scaler_CFLAGS = $(AM_CFLAGS) $(CLIENT_CFLAGS)  ${CAIRO_CFLAGS}
+ 
+ if HAVE_CAIRO_GLESV2
+ demo_clients += weston-nested weston-nested-client
+ 
+ weston_nested_SOURCES = clients/nested.c
+ weston_nested_LDADD = libtoytoolkit.la $(SERVER_LIBS)
+-weston_nested_CFLAGS = $(AM_CFLAGS) $(CLIENT_CFLAGS)
++weston_nested_CFLAGS = $(AM_CFLAGS) $(CLIENT_CFLAGS) ${CAIRO_CFLAGS}
+ 
+ weston_nested_client_SOURCES = clients/nested-client.c
+ weston_nested_client_LDADD = $(SIMPLE_EGL_CLIENT_LIBS) -lm
+@@ -527,32 +527,32 @@
  
  weston_eventdemo_SOURCES = clients/eventdemo.c
  weston_eventdemo_LDADD = libtoytoolkit.la
@@ -83,7 +96,10 @@
  
  weston_stacking_SOURCES = clients/stacking.c
  weston_stacking_LDADD = libtoytoolkit.la
-@@ -552,7 +552,7 @@
+-weston_stacking_CFLAGS = $(AM_CFLAGS) $(CLIENT_CFLAGS)
++weston_stacking_CFLAGS = $(AM_CFLAGS) $(CLIENT_CFLAGS)  ${CAIRO_CFLAGS}
+ 
+ weston_calibrator_SOURCES = clients/calibrator.c	\
  	shared/matrix.c					\
  	shared/matrix.h
  weston_calibrator_LDADD = libtoytoolkit.la
@@ -92,7 +108,17 @@
  
  if BUILD_SUBSURFACES_CLIENT
  demo_clients += weston-subsurfaces
-@@ -581,14 +581,14 @@
+@@ -560,7 +560,8 @@
+ weston_subsurfaces_CFLAGS =			\
+ 	$(AM_CFLAGS)				\
+ 	$(SIMPLE_EGL_CLIENT_CFLAGS)		\
+-	$(CLIENT_CFLAGS)
++	$(CLIENT_CFLAGS)  ${CAIRO_CFLAGS}
++
+ weston_subsurfaces_LDADD = libtoytoolkit.la $(SIMPLE_EGL_CLIENT_LIBS) -lm
+ endif
+ 
+@@ -581,14 +582,14 @@
  	protocol/input-method-protocol.c		\
  	protocol/input-method-client-protocol.h
  weston_keyboard_LDADD = libtoytoolkit.la
@@ -109,7 +135,7 @@
  
  weston_info_SOURCES = clients/weston-info.c
  weston_info_LDADD = $(WESTON_INFO_LIBS) libshared.la
-@@ -599,7 +599,7 @@
+@@ -599,7 +600,7 @@
  	protocol/desktop-shell-client-protocol.h	\
  	protocol/desktop-shell-protocol.c
  weston_desktop_shell_LDADD = libtoytoolkit.la
