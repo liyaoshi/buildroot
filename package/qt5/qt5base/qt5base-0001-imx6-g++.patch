@@ -1,0 +1,13 @@
+--- qt5base-5.3.2/mkspecs/devices/linux-imx6-g++/qmake.conf.ori	2014-10-11 13:05:10.480266932 -0400
++++ qt5base-5.3.2/mkspecs/devices/linux-imx6-g++/qmake.conf	2014-10-11 13:05:51.316267533 -0400
+@@ -26,8 +26,8 @@
+ QMAKE_LIBS_OPENVG      += -lOpenVG -lEGL -lGAL
+ 
+ QMAKE_LFLAGS           += -Wl,-rpath-link,$$[QT_SYSROOT]/usr/lib
+-
+-IMX6_CFLAGS             = -march=armv7-a -mfpu=neon -DLINUX=1 -DEGL_API_FB=1
++DISTRO_OPTS            += hard-float
++IMX6_CFLAGS            = -march=armv7-a -mcpu=cortex-a9 -mfpu=neon -DLINUX=1 -DEGL_API_FB=1 -DEGL_API_WL=1
+ QMAKE_CFLAGS           += $$IMX6_CFLAGS
+ QMAKE_CXXFLAGS         += $$IMX6_CFLAGS
+ 
