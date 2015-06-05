@@ -31,6 +31,33 @@ endef
 # Make sure these commands are idempotent.
 define GPU_VIV_BIN_MX6Q_BUILD_CMDS
 	$(SED) 's/defined(LINUX)/defined(__linux__)/g' $(@D)/gpu-core/usr/include/*/*.h
+
+	ln -sf libEGL-wl.so $(@D)/gpu-core/usr/lib/libEGL.so
+    ln -sf libEGL-wl.so $(@D)/gpu-core/usr/lib/libEGL.so.1
+    ln -sf libEGL-wl.so $(@D)/gpu-core/usr/lib/libEGL.so.1.0
+    ln -sf libGAL-wl.so $(@D)/gpu-core/usr/lib/libGAL.so
+    ln -sf libGLESv2-wl.so $(@D)/gpu-core/usr/lib/libGLESv2.so
+	ln -sf libGLESv2-wl.so $(@D)/gpu-core/usr/lib/libGLESv2.so.2
+	ln -sf libGLESv2-wl.so $(@D)/gpu-core/usr/lib/libGLESv2.so.2.0.0
+    ln -sf libVIVANTE-wl.so $(@D)/gpu-core/usr/lib/libVIVANTE.so
+    ln -sf libGL.so.1.2 $(@D)/gpu-core/usr/lib/libGL.so.1
+	ln -sf libGL.so.1.2 $(@D)/gpu-core/usr/lib/libGL.so
+    rm -rf $(@D)/gpu-core/usr/lib/directfb-1.6-0
+	rm -rf $(@D)/gpu-core/usr/lib/dri
+	rm -rf $(@D)/gpu-core/usr/lib/*fb*
+	rm -rf $(@D)/gpu-core/usr/lib/*x11*
+    ln -sf libGL.so.1.2 $(@D)/gpu-core/usr/lib/libGL.so
+	ln -sf libGL.so.1.2 $(@D)/gpu-core/usr/lib/libGL.so.1
+	ln -sf libGL.so.1.2 $(@D)/gpu-core/usr/lib/libGL.so.1.2.0
+	ln -sf libEGL-$(GPU_VIV_BIN_MX6Q_LIB_TARGET).so $(@D)/gpu-core/usr/lib/libEGL.so
+	ln -sf libEGL-$(GPU_VIV_BIN_MX6Q_LIB_TARGET).so $(@D)/gpu-core/usr/lib/libEGL.so.1
+	ln -sf libEGL-$(GPU_VIV_BIN_MX6Q_LIB_TARGET).so $(@D)/gpu-core/usr/lib/libEGL.so.1.0
+	ln -sf libGLESv2-$(GPU_VIV_BIN_MX6Q_LIB_TARGET).so $(@D)/gpu-core/usr/lib/libGLESv2.so
+	ln -sf libGLESv2-$(GPU_VIV_BIN_MX6Q_LIB_TARGET).so $(@D)/gpu-core/usr/lib/libGLESv2.so.2
+    ln -sf libGLESv2-$(GPU_VIV_BIN_MX6Q_LIB_TARGET).so $(@D)/gpu-core/usr/lib/libGLESv2.so.2.0.0
+    ln -sf libVIVANTE-$(GPU_VIV_BIN_MX6Q_LIB_TARGET).so $(@D)/gpu-core/usr/lib/libVIVANTE.so
+	ln -sf libGAL-$(GPU_VIV_BIN_MX6Q_LIB_TARGET).so $(@D)/gpu-core/usr/lib/libGAL.so
+
 endef
 
 ifeq ($(GPU_VIV_BIN_MX6Q_LIB_TARGET),fb)
@@ -45,7 +72,7 @@ endif
 define GPU_VIV_BIN_MX6Q_INSTALL_STAGING_CMDS
 	cp -r $(@D)/gpu-core/usr/* $(STAGING_DIR)/usr
 	$(GPU_VIV_BIN_MX6Q_FIXUP_FB_HEADERS)
-	for lib in egl glesv2 vg; do \
+	for lib in egl glesv2 vg wayland-egl ; do \
 		$(INSTALL) -m 0644 -D \
 			package/freescale-imx/gpu-viv-bin-mx6q/$${lib}.pc \
 			$(STAGING_DIR)/usr/lib/pkgconfig/$${lib}.pc; \
