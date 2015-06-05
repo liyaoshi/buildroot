@@ -22,6 +22,8 @@ GPU_VIV_BIN_MX6Q_REDISTRIBUTE = NO
 GPU_VIV_BIN_MX6Q_PROVIDES = libegl libgles libopenvg
 GPU_VIV_BIN_MX6Q_LIB_TARGET = $(call qstrip,$(BR2_PACKAGE_GPU_VIV_BIN_MX6Q_OUTPUT))
 
+GPU_VIV_BIN_MX6Q_DEPENDENCIES = wayland
+
 define GPU_VIV_BIN_MX6Q_EXTRACT_CMDS
 	$(call FREESCALE_IMX_EXTRACT_HELPER,$(DL_DIR)/$(GPU_VIV_BIN_MX6Q_SOURCE))
 endef
@@ -36,6 +38,7 @@ define GPU_VIV_BIN_MX6Q_BUILD_CMDS
     ln -sf libEGL-wl.so $(@D)/gpu-core/usr/lib/libEGL.so.1
     ln -sf libEGL-wl.so $(@D)/gpu-core/usr/lib/libEGL.so.1.0
     ln -sf libGAL-wl.so $(@D)/gpu-core/usr/lib/libGAL.so
+    ln -sf libGAL_egl.wl.so $(@D)/gpu-core/usr/lib/libGAL_egl.so
     ln -sf libGLESv2-wl.so $(@D)/gpu-core/usr/lib/libGLESv2.so
 	ln -sf libGLESv2-wl.so $(@D)/gpu-core/usr/lib/libGLESv2.so.2
 	ln -sf libGLESv2-wl.so $(@D)/gpu-core/usr/lib/libGLESv2.so.2.0.0
