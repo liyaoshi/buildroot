@@ -8,7 +8,7 @@ QT5BASE_VERSION = $(QT5_VERSION)
 QT5BASE_SITE = $(QT5_SITE)
 QT5BASE_SOURCE = qtbase-opensource-src-$(QT5BASE_VERSION).tar.xz
 
-QT5BASE_DEPENDENCIES = host-pkgconf zlib pcre
+QT5BASE_DEPENDENCIES = host-pkgconf zlib pcre mtdev
 QT5BASE_INSTALL_STAGING = YES
 
 # A few comments:
@@ -26,7 +26,8 @@ QT5BASE_CONFIGURE_OPTS += \
 	-no-iconv \
 	-system-zlib \
 	-system-pcre \
-	-no-pch
+	-no-pch	\
+	-mtdev
 
 ifeq ($(BR2_ENABLE_DEBUG),y)
 QT5BASE_CONFIGURE_OPTS += -debug
