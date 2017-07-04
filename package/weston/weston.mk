@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-WESTON_VERSION = 2.0.0
+WESTON_VERSION = 1.9.0
 WESTON_SITE = http://wayland.freedesktop.org/releases
 WESTON_SOURCE = weston-$(WESTON_VERSION).tar.xz
 WESTON_LICENSE = MIT
@@ -15,14 +15,28 @@ WESTON_DEPENDENCIES = host-pkgconf wayland wayland-protocols \
 	$(if $(BR2_PACKAGE_WEBP),webp)
 
 WESTON_CONF_OPTS = \
-	--with-dtddir=$(STAGING_DIR)/usr/share/wayland \
-	--disable-headless-compositor \
-	--disable-colord \
-	--disable-devdocs \
-	--disable-setuid-install
+		--disable-xwayland \
+                --enable-simple-clients \
+                --enable-clients \
+                --enable-demo-clients-install \
+                --disable-libunwind \
+                --disable-rpi-compositor \
+                --disable-rdp-compositor \
+		--with-cairo-glesv2 \
+		--disable-wayland-compositor \
+                --disable-lcms	\
+		--disable-libunwind \
+		--disable-xwayland-test \
+		WESTON_NATIVE_BACKEND=fbdev-backend.so
 
 WESTON_MAKE_OPTS = \
-	WAYLAND_PROTOCOLS_DATADIR=$(STAGING_DIR)/usr/share/wayland-protocols
+		COMPOSITOR_CFLAGS="-I ${STAGING_DIR}/usr/include/pixman-1 -DLINUX=1 -DEGL_API_FB -DEGL_API_WL" \
+		FB_COMPOSITOR_CFLAGS="-I ${STAGING_DIR}/usr/include/pixman-1 -DLINUX=1 -DEGL_API_FB -DEGL_API_WL" \
+		SIMPLE_EGL_CLIENT_CFLAGS="-DLINUX -DEGL_API_FB -DEGL_API_WL" \
+		EGL_TESTS_CFLAGS="-DLINUX -DEGL_API_FB -DEGL_API_WL" \
+		CLIENT_CFLAGS="-I ${STAGING_DIR}/usr/include/cairo -I ${STAGING_DIR}/usr/include/pixman-1 -DLINUX -DEGL_API_FB -DEGL_API_WL" \
+		COMPOSITOR_LIBS="-lGLESv2 -lEGL -lGAL -lwayland-server -lxkbcommon -lpixman-1" \
+		FB_COMPOSITOR_LIBS="-lGLESv2 -lEGL -lwayland-server -lxkbcommon" 
 
 # Uses VIDIOC_EXPBUF, only available from 3.8+
 ifeq ($(BR2_TOOLCHAIN_HEADERS_AT_LEAST_3_8),)
