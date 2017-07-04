@@ -40,7 +40,7 @@ HOST_CAIRO_CONF_OPTS = \
 	--disable-directfb \
 	--enable-ft \
 	--disable-gobject \
-	--disable-glesv2 \
+	--enable-glesv2 \
 	--disable-vg \
 	--disable-xlib \
 	--disable-xcb \
