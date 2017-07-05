@@ -9,7 +9,7 @@ IMX_GPU_VIV_SITE = $(FREESCALE_IMX_SITE)
 IMX_GPU_VIV_SOURCE = imx-gpu-viv-$(IMX_GPU_VIV_VERSION).bin
 
 IMX_GPU_VIV_INSTALL_STAGING = YES
-
+IMX_GPU_VIV_DEPENDENCIES = wayland
 IMX_GPU_VIV_LICENSE = NXP Semiconductor Software License Agreement
 IMX_GPU_VIV_LICENSE_FILES = EULA COPYING
 IMX_GPU_VIV_REDISTRIBUTE = NO
@@ -34,20 +34,23 @@ endef
 # Make sure these commands are idempotent.
 define IMX_GPU_VIV_BUILD_CMDS
 	$(SED) 's/defined(LINUX)/defined(__linux__)/g' $(@D)/gpu-core/usr/include/*/*.h
-	ln -sf libGL.so.1.2 $(@D)/gpu-core/usr/lib/libGL.so
-	ln -sf libGL.so.1.2 $(@D)/gpu-core/usr/lib/libGL.so.1
-	ln -sf libGL.so.1.2 $(@D)/gpu-core/usr/lib/libGL.so.1.2.0
-	ln -sf libEGL-$(IMX_GPU_VIV_LIB_TARGET).so $(@D)/gpu-core/usr/lib/libEGL.so
-	ln -sf libEGL-$(IMX_GPU_VIV_LIB_TARGET).so $(@D)/gpu-core/usr/lib/libEGL.so.1
-	ln -sf libEGL-$(IMX_GPU_VIV_LIB_TARGET).so $(@D)/gpu-core/usr/lib/libEGL.so.1.0
-	ln -sf libGLESv2-$(IMX_GPU_VIV_LIB_TARGET).so $(@D)/gpu-core/usr/lib/libGLESv2.so
-	ln -sf libGLESv2-$(IMX_GPU_VIV_LIB_TARGET).so $(@D)/gpu-core/usr/lib/libGLESv2.so.2
-	ln -sf libGLESv2-$(IMX_GPU_VIV_LIB_TARGET).so $(@D)/gpu-core/usr/lib/libGLESv2.so.2.0.0
-	ln -sf libVIVANTE-$(IMX_GPU_VIV_LIB_TARGET).so $(@D)/gpu-core/usr/lib/libVIVANTE.so
-	ln -sf libGAL-$(IMX_GPU_VIV_LIB_TARGET).so $(@D)/gpu-core/usr/lib/libGAL.so
+	cd $(@D)/gpu-core/usr/lib/ ;\
+	ln -sf libEGL-wl.so libEGL.so ;\
+	ln -sf libEGL-wl.so libEGL.so.1 ;\
+	ln -sf libEGL-wl.so libEGL.so.1.0 ;\
+	ln -sf libGAL-wl.so libGAL.so ;\
+	ln -sf libVIVANTE-wl.so	libVIVANTE.so ;\
+	ln -sf libOpenVG.3d.so libOpenVG.so ;\
+	ln -sf libGL.so.1.2 libGL.so ; \
+	ln -sf libGL.so.1.2 libGL.so.1 ; \
+	ln -sf libGLESv2-wl.so libGLESv2.so ;\
+	ln -sf libGLESv2-wl.so libGLESv2.so.2 ;\
+	ln -sf libGLESv2-wl.so libGLESv2.so.2.0.0 ;\
+	$(RM) -rf dri libGAL-fb.so libEGL-x11.so libEGL-fb.so libGAL.fb.so libGAL-x11.so libVIVANTE-x11.so libGLESv2-x11.so libVIVANTE-fb.so libVIVANTE.fb.so
+	
 endef
 
-ifeq ($(IMX_GPU_VIV_LIB_TARGET),fb)
+ifeq ($(IMX_GPU_VIV_LIB_TARGET),wl)
 define IMX_GPU_VIV_FIXUP_FB_HEADERS
 	$(SED) '39i\
 		#if !defined(EGL_API_X11) && !defined(EGL_API_DFB) && !defined(EGL_API_FB) \n\
@@ -117,14 +120,6 @@ define IMX_GPU_VIV_INSTALL_TARGET_CMDS
 	$(IMX_GPU_VIV_INSTALL_G2D)
 	$(IMX_GPU_VIV_INSTALL_GMEM_INFO)
 	cp -a $(@D)/gpu-core/usr/lib $(TARGET_DIR)/usr
-	for lib in EGL GAL VIVANTE GLESv2; do \
-		for f in $(TARGET_DIR)/usr/lib/lib$${lib}-*.so; do \
-			case $$f in \
-				*-$(IMX_GPU_VIV_LIB_TARGET).so) : ;; \
-				*) $(RM) $$f ;; \
-			esac; \
-		done; \
-	done
 endef
 
 $(eval $(generic-package))

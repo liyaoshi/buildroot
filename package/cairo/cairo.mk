@@ -11,6 +11,7 @@ CAIRO_LICENSE_FILES = COPYING COPYING-LGPL-2.1 COPYING-MPL-1.1
 CAIRO_SITE = http://cairographics.org/releases
 CAIRO_INSTALL_STAGING = YES
 CAIRO_AUTORECONF = YES
+CAIRO_DEPENDENCIES = wayland 
 
 # relocation truncated to fit: R_68K_GOT16O
 ifeq ($(BR2_m68k_cf),y)
@@ -30,6 +31,9 @@ endif
 CAIRO_CONF_OPTS = \
 	--enable-trace=no \
 	--enable-interpreter=no
+	--enable-glesv2=yes \
+	egl_CFLAGS="-DLINUX=1 -DEGL_API_FB -DEGL_API_WL" \	
+	glesv2_CFLAGS="-DLINUX=1 -DEGL_API_FB -DEGL_API_WL"
 
 CAIRO_DEPENDENCIES = host-pkgconf fontconfig pixman
 
@@ -40,7 +44,6 @@ HOST_CAIRO_CONF_OPTS = \
 	--disable-directfb \
 	--enable-ft \
 	--disable-gobject \
-	--enable-glesv2 \
 	--disable-vg \
 	--disable-xlib \
 	--disable-xcb \
@@ -58,7 +61,8 @@ HOST_CAIRO_DEPENDENCIES = \
 	host-fontconfig \
 	host-libpng \
 	host-pixman \
-	host-pkgconf
+	host-pkgconf \
+	host-wayland
 
 # DirectFB svg support rely on Cairo and Cairo DirectFB support depends on
 # DirectFB. Break circular dependency by disabling DirectFB support in Cairo
