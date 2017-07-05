@@ -22,9 +22,6 @@ LIBGTK3_CONF_OPTS = \
 	--disable-glibtest \
 	--enable-explicit-deps=no
 
-# Override pkg-config pkgdatadir variable, it needs the prefix
-LIBGTK3_MAKE_OPTS = \
-	WAYLAND_PROTOCOLS_DATADIR=$(STAGING_DIR)/usr/share/wayland-protocols
 
 LIBGTK3_DEPENDENCIES = host-pkgconf host-libgtk3 atk libglib2 cairo pango gdk-pixbuf libepoxy
 
@@ -40,7 +37,6 @@ LIBGTK3_CONF_OPTS += --disable-x11-backend
 endif
 
 ifeq ($(BR2_PACKAGE_LIBGTK3_WAYLAND),y)
-LIBGTK3_DEPENDENCIES += wayland wayland-protocols libxkbcommon
 LIBGTK3_CONF_OPTS += --enable-wayland-backend
 else
 LIBGTK3_CONF_OPTS += --disable-wayland-backend

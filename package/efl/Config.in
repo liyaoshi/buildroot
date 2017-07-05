@@ -180,7 +180,6 @@ config BR2_PACKAGE_EFL_WAYLAND
 	depends on BR2_PACKAGE_EFL_OPENGLES # OpenGL ES with EGL support only
 	depends on BR2_ENABLE_LOCALE # efl-drm <- efl-elput <- linput
 	select BR2_PACKAGE_EFL_DRM
-	select BR2_PACKAGE_WAYLAND_PROTOCOLS
 
 comment "Wayland support needs udev /dev management (eeze), OpenGL ES w/ EGL, threads, locales"
 	depends on BR2_PACKAGE_WAYLAND

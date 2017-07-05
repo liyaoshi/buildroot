@@ -10,7 +10,7 @@ WESTON_SOURCE = weston-$(WESTON_VERSION).tar.xz
 WESTON_LICENSE = MIT
 WESTON_LICENSE_FILES = COPYING
 
-WESTON_DEPENDENCIES = host-pkgconf wayland wayland-protocols \
+WESTON_DEPENDENCIES = host-pkgconf wayland \
 	libxkbcommon pixman libpng jpeg mtdev udev cairo libinput \
 	$(if $(BR2_PACKAGE_WEBP),webp)
 

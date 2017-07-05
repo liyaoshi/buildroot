@@ -214,7 +214,6 @@ endif
 # which depends on wayland-client to build.
 # So enable gl_drm only when wayland support is selected.
 ifeq ($(BR2_PACKAGE_EFL_WAYLAND),y)
-EFL_DEPENDENCIES += wayland wayland-protocols
 EFL_CONF_OPTS += --enable-wayland --enable-gl-drm
 else
 EFL_CONF_OPTS += --disable-wayland --disable-gl-drm
