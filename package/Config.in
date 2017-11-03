@@ -505,6 +505,8 @@ endmenu
 	source "package/ti-sgx-km/Config.in"
 	source "package/ti-sgx-um/Config.in"
 	source "package/ti-uim/Config.in"
+	source "package/ti-gc320-driver/Config.in"
+	source "package/ti-gc320-lib/Config.in"
 	source "package/ti-utils/Config.in"
 	source "package/triggerhappy/Config.in"
 	source "package/uboot-tools/Config.in"
