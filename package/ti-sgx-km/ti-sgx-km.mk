@@ -5,7 +5,7 @@
 ################################################################################
 
 # This correpsonds to SDK 02.00.00.00
-TI_SGX_KM_VERSION = 2b7523d07a13ab704a24a7664749551f4a13ed32
+TI_SGX_KM_VERSION = 0086977380d3320d70a3abc78b95fa0641427073
 TI_SGX_KM_SITE = git://git.ti.com/graphics/omap5-sgx-ddk-linux.git
 TI_SGX_KM_LICENSE = GPL-2.0
 TI_SGX_KM_LICENSE_FILES = GPL-COPYING
@@ -23,8 +23,8 @@ else ifeq ($(BR2_PACKAGE_TI_SGX_AM437X),y)
 TI_SGX_KM_PLATFORM_NAME = omap437x
 else ifeq ($(BR2_PACKAGE_TI_SGX_AM4430),y)
 TI_SGX_KM_PLATFORM_NAME = omap4430
-else ifeq ($(BR2_PACKAGE_TI_SGX_5430),y)
-TI_SGX_KM_PLATFORM_NAME = omap5430
+else ifeq ($(BR2_PACKAGE_TI_SGX_AM5430),y)
+TI_SGX_KM_PLATFORM_NAME = omap
 endif
 
 TI_SGX_KM_SUBDIR = eurasia_km/eurasiacon/build/linux2/$(TI_SGX_KM_PLATFORM_NAME)_linux

@@ -31,7 +31,7 @@ CAIRO_CONF_OPTS = \
 	--enable-trace=no \
 	--enable-interpreter=no
 
-CAIRO_DEPENDENCIES = host-pkgconf fontconfig pixman
+CAIRO_DEPENDENCIES = host-pkgconf fontconfig pixman wayland
 
 # Just the bare minimum to make other host-* packages happy
 HOST_CAIRO_CONF_OPTS = \

@@ -1,0 +1,4 @@
+config BR2_PACKAGE_LIBGBM
+	bool "libgbm"
+	help
+	  https://github.com/robclark/libgbm.git
