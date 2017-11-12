@@ -462,6 +462,8 @@ define LINUX_FIRMWARE_INSTALL_TARGET_CMDS
 	mkdir -p $(TARGET_DIR)/lib/firmware
 	$(LINUX_FIRMWARE_INSTALL_FILES)
 	$(LINUX_FIRMWARE_INSTALL_DIRS)
+	cp -arf $(TOPDIR)/package/linux-firmware/TIInit_11.8.32.bts $(TARGET_DIR)/lib/firmware/ti-connectivity
+	cp -arf $(TOPDIR)/package/linux-firmware/wl18xx-conf.bin $(TARGET_DIR)/lib/firmware/ti-connectivity
 endef
 
 $(eval $(generic-package))
