@@ -10,7 +10,9 @@ GHOSTSCRIPT_SOURCE = ghostscript-$(GHOSTSCRIPT_VERSION).tar.xz
 GHOSTSCRIPT_LICENSE = AGPL-3.0
 GHOSTSCRIPT_LICENSE_FILES = LICENSE
 # 0001-Fix-cross-compilation-issue.patch
-GHOSTSCRIPT_AUTORECONF = YES
+GHOSTSCRIPT_AUTORECONF = YES 
+GHOSTSCRIPT_INSTALL_TARGET = YES
+GHOSTSCRIPT_INSTALL_STAGING = YES
 GHOSTSCRIPT_DEPENDENCIES = \
 	host-lcms2 \
 	host-libjpeg \
@@ -42,8 +44,8 @@ GHOSTSCRIPT_CONF_OPTS = \
 	--with-fontpath=$(GHOSTSCRIPT_FONTS_TARGET_DIR) \
 	--enable-freetype \
 	--disable-gtk \
+	 --enable-dynamic   \
 	--without-jbig2dec \
-	--without-libpaper \
 	--with-system-libtiff
 
 ifeq ($(BR2_PACKAGE_LIBIDN),y)
