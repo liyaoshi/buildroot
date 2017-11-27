@@ -44,9 +44,8 @@ GHOSTSCRIPT_CONF_OPTS = \
 	--with-fontpath=$(GHOSTSCRIPT_FONTS_TARGET_DIR) \
 	--enable-freetype \
 	--disable-gtk \
-	 --enable-dynamic   \
-	--without-jbig2dec \
-	--with-system-libtiff
+	--enable-dynamic   \
+	--without-jbig2dec 
 
 ifeq ($(BR2_PACKAGE_LIBIDN),y)
 GHOSTSCRIPT_DEPENDENCIES += libidn
