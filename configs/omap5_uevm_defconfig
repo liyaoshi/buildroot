@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Buildroot 2017.11-git-22234-g1af1fad-dirty Configuration
+# Buildroot 2017.11-git-22236-g04d2d14 Configuration
 #
 BR2_HAVE_DOT_CONFIG=y
 BR2_HOST_GCC_AT_LEAST_4_5=y
@@ -2230,7 +2230,7 @@ BR2_PACKAGE_BLUEZ5_UTILS_TEST=y
 # BR2_PACKAGE_CONNTRACK_TOOLS is not set
 # BR2_PACKAGE_CRDA is not set
 # BR2_PACKAGE_CTORRENT is not set
-# BR2_PACKAGE_CUPS is not set
+BR2_PACKAGE_CUPS=y
 # BR2_PACKAGE_DANTE is not set
 # BR2_PACKAGE_DARKHTTPD is not set
 # BR2_PACKAGE_DHCP is not set
@@ -2260,9 +2260,11 @@ BR2_PACKAGE_BLUEZ5_UTILS_TEST=y
 #
 # gupnp-tools needs libgtk3
 #
+# BR2_PACKAGE_GUTENPRINT is not set
 # BR2_PACKAGE_HANS is not set
 # BR2_PACKAGE_HIAWATHA is not set
 # BR2_PACKAGE_HOSTAPD is not set
+# BR2_PACKAGE_HPLIP is not set
 # BR2_PACKAGE_HTTPING is not set
 # BR2_PACKAGE_IBRDTN_TOOLS is not set
 # BR2_PACKAGE_IBRDTND is not set
