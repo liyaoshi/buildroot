@@ -25,7 +25,8 @@ endef
 # libs use the following file for configuration
 define TI_SGX_UM_INSTALL_CONF
 	$(INSTALL) -D -m 0644 package/ti-sgx-um/powervr.ini \
-		$(TARGET_DIR)/etc/powervr.ini
+	$(TARGET_DIR)/etc/powervr.ini 
+	cp -arvf package/ti-sgx-um/gbm $(TARGET_DIR)/usr/lib
 endef
 
 TI_SGX_UM_POST_INSTALL_TARGET_HOOKS += TI_SGX_UM_INSTALL_CONF
