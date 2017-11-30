@@ -17,10 +17,10 @@ define LIBGBM_RUN_AUTOGEN
 	cd $(@D) && PATH=$(BR_PATH) ./autogen.sh 
 endef
 
-define LIBGBM_RUN_FIXMAKE
-	$(SED) 's/\-O3/\-O0/' $(@D)/Makefile
-endef
+# define LIBGBM_RUN_FIXMAKE
+# 	$(SED) 's/\-O3/\-O0/' $(@D)/Makefile
+# endef
 
-LIBGBM_PRE_BUILD_HOOKS += LIBGBM_RUN_FIXMAKE
+# LIBGBM_PRE_BUILD_HOOKS += LIBGBM_RUN_FIXMAKE
 LIBGBM_PRE_CONFIGURE_HOOKS += LIBGBM_RUN_AUTOGEN
 $(eval $(autotools-package))
