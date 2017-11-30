@@ -120,7 +120,7 @@ ifeq ($(BR2_OPTIMIZE_2),y)
 TARGET_OPTIMIZATION = -O2
 endif
 ifeq ($(BR2_OPTIMIZE_3),y)
-TARGET_OPTIMIZATION = -O3
+TARGET_OPTIMIZATION = -O3 -march=armv7-a -marm -mfpu=neon  -mfloat-abi=hard 
 endif
 ifeq ($(BR2_OPTIMIZE_G),y)
 TARGET_OPTIMIZATION = -Og

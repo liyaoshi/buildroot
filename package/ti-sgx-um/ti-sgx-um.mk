@@ -24,7 +24,7 @@ endef
 
 # libs use the following file for configuration
 define TI_SGX_UM_INSTALL_CONF
-	$(INSTALL) -D -m 0644 package/ti-sgx-um/powervr.ini \
+	$(INSTALL) -D -m 0644 $(@D)/targetfs/jacinto6evm/etc/powervr.ini \
 	$(TARGET_DIR)/etc/powervr.ini 
 	cp -arvf package/ti-sgx-um/gbm $(TARGET_DIR)/usr/lib
 endef
