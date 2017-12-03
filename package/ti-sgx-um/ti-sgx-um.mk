@@ -19,7 +19,8 @@ define TI_SGX_UM_INSTALL_STAGING_CMDS
 endef
 
 define TI_SGX_UM_INSTALL_TARGET_CMDS
-	$(TARGET_MAKE_ENV) $(MAKE) -C $(@D) DISCIMAGE=$(TARGET_DIR) install
+	$(TARGET_MAKE_ENV) $(MAKE) -C $(@D) DISCIMAGE=$(TARGET_DIR) install 
+	cp -arvf $(TARGET_DIR)/usr/lib/libGLESv2.so.1  $(TARGET_DIR)/usr/lib/libGLESv2.so.2
 endef
 
 # libs use the following file for configuration

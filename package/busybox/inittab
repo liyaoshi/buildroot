@@ -20,6 +20,7 @@
 ::sysinit:/bin/mkdir -p /dev/shm
 ::sysinit:/bin/mount -a
 ::sysinit:/bin/hostname -F /etc/hostname
+::sysinit:/bin/mkdir -m 700 /tmp/weston
 # now run any rc scripts
 ::sysinit:/etc/init.d/rcS
 

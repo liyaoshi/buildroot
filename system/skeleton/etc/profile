@@ -18,3 +18,4 @@ for i in /etc/profile.d/*.sh ; do
 	fi
 	unset i
 done
+export XDG_RUNTIME_DIR=/tmp/weston
