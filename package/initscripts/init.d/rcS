@@ -24,4 +24,4 @@ for i in /etc/init.d/S??* ;do
 	    ;;
     esac
 done
-
+weston --tty=1 --idle-time=0 > /dev/null 2 >&1 &

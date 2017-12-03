@@ -42,6 +42,7 @@ endef
 
 define LIBVPX_INSTALL_STAGING_CMDS
 	$(TARGET_MAKE_ENV) $(LIBVPX_MAKE_ENV) $(MAKE) DESTDIR="$(STAGING_DIR)" -C $(@D) install
+	cp -arf $(@D)/vpx/*.h $(STAGING_DIR)/usr/include/vpx
 endef
 
 define LIBVPX_INSTALL_TARGET_CMDS
