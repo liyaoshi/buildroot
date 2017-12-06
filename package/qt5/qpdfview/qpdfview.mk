@@ -20,7 +20,7 @@ endef
 
 define QPDFVIEW_INSTALL_TARGET_CMDS
 	cp -arf  $(@D)/qpdfview $(TARGET_DIR)/usr/bin
-	cp -arf  $(@D)/libqpdfview_pdf.so $(TARGET_DIR)/usr/lib
+	cp -arf  $(@D)/libqpdfview_pdf.so $(TARGET_DIR)/usr/bin
 endef
 
 
