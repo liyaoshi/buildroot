@@ -30,4 +30,4 @@ iw reg set CN
 [ -f /etc/resized ] && resize2fs /dev/mmcblk1p4 && echo done > /etc/resized
 
 export XDG_RUNTIME_DIR=/tmp/weston
-weston --tty=1 --idle-time=0 > /dev/null 2 >&1 &
+weston --tty=7 --idle-time=0 --log=/dev/null &
