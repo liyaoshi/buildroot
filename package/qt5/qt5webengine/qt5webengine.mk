@@ -52,7 +52,9 @@ define QT5WEBENGINE_INSTALL_STAGING_CMDS
 endef
 
 define QT5WEBENGINE_INSTALL_TARGET_QMLS
+	cd $(@D)/examples/webenginewidgets/simplebrowser ;  $(TARGET_MAKE_ENV) $(QT5WEBENGINE_ENV) $(HOST_DIR)/usr/bin/qmake ;make 
 	cp -dpfr $(STAGING_DIR)/usr/qml/QtWebEngine $(TARGET_DIR)/usr/qml/
+	cp -arf $(@D)/examples/webenginewidgets/simplebrowser/simplebrowser  $(TARGET_DIR)/usr/bin/
 endef
 
 ifeq ($(BR2_PACKAGE_QT5BASE_EXAMPLES),y)
