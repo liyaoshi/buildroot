@@ -1,0 +1,12 @@
+config BR2_PACKAGE_CMEM
+	bool "cmem"
+	help
+	  Kernel modules for TI CPUs with SGX GPU.
+	  This package supports AM335x, AM437x, AM4430 and AM5430.
+	  It builds the kernel module and the user space binaries.
+	  For older CPUs or kernels use the ti-gfx package.
+
+	  Note: it needs a TI specific kernel to build properly.
+
+	  http://git.ti.com/graphics/omap5-sgx-ddk-linux
+

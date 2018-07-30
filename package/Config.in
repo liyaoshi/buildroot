@@ -509,6 +509,8 @@ endmenu
 	source "package/ti-gc320-driver/Config.in"
 	source "package/ti-gc320-lib/Config.in"
 	source "package/ti-utils/Config.in"
+	source "package/ipcdev/Config.in"
+	source "package/cmem/Config.in"
 	source "package/triggerhappy/Config.in"
 	source "package/uboot-tools/Config.in"
 	source "package/ubus/Config.in"
