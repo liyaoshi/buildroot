@@ -1,0 +1,7 @@
+config BR2_PACKAGE_GST_PLUGIN_DUCATI
+	bool "gst-ducati"
+	help
+	  GStreamer plug-in to use ti-ducati
+
+	  http://cgit.freedesktop.org/gstreamer/gst-omx
+
