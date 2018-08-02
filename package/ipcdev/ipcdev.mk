@@ -13,7 +13,7 @@ IPCDEV_INSTALL_STAGING = YES
 IPCDEV_DEPENDENCIES = linux
 
 define IPCDEV_RUN_CONFIG
-    cd $(@D) && PATH=$(BR_PATH) && KERNEL_DIR=$(LINUX_DIR)  make -f ipc-linux.mak config
+    cd $(@D) ; make -f ipc-linux.mak config  KERNEL_INSTALL_DIR=$(LINUX_DIR)  TOOLCHAIN_PREFIX=$(TARGET_CROSS) TOOLCHAIN_LONGNAME=arm-linux-gnueabihf
 endef
 
 IPCDEV_POST_CONFIGURE_HOOKS += IPCDEV_RUN_CONFIG
