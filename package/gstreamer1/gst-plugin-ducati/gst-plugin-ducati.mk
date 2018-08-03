@@ -17,7 +17,7 @@ GST_PLUGIN_DUCATI_MAKE_OPTS = \
         CFLAGS="$(TARGET_CFLAGS) -w"
 
 define GST_PLUGIN_DUCATI_RUN_AUTOGEN
-	cd $(@D); $(TARGET_CONFIGURE_ARGS) $(TARGET_CONFIGURE_OPTS) ./autogen.sh --host=arm-linux-gnueabihf
+	cd $(@D); $(TARGET_CONFIGURE_ARGS) $(TARGET_CONFIGURE_OPTS) ./autogen.sh --host=arm-linux-gnueabihf  --enable-maintainer-mode --host=arm-linux --with-libtool-sysroot=$(STAGING_DIR) 
 endef
 
 GST_PLUGIN_DUCATI_PRE_CONFIGURE_HOOKS += GST_PLUGIN_DUCATI_RUN_AUTOGEN
