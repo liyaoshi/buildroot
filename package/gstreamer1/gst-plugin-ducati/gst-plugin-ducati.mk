@@ -9,7 +9,7 @@ GST_PLUGIN_DUCATI_SITE = git://git.ti.com/glsdk/gst-plugin-ducati.git
 GST_PLUGIN_DUCATI_LICENSE = GPL-2.0
 GST_PLUGIN_DUCATI_LICENSE_FILES = GPL-COPYING
 
-# GST_PLUGIN_DUCATI_INSTALL_STAGING = YES
+GST_PLUGIN_DUCATI_INSTALL_STAGING = YES
 
 GST_PLUGIN_DUCATI_DEPENDENCIES = gstreamer1 gst1-plugins-good gst1-plugins-base gst1-plugins-bad libdce
 
@@ -21,6 +21,12 @@ define GST_PLUGIN_DUCATI_RUN_AUTOGEN
 endef
 
 GST_PLUGIN_DUCATI_PRE_CONFIGURE_HOOKS += GST_PLUGIN_DUCATI_RUN_AUTOGEN
+
+define GST_DUCATI_RUN_REMOVE_RELINK
+        cd $(@D) ; $(SED) '/relink_command*/d' $(@D)/src/libgstducati.la
+endef
+
+GST_PLUGIN_DUCATI_PRE_INSTALL_STAGING_HOOKS += GST_DUCATI_RUN_REMOVE_RELINK
 
 $(eval $(autotools-package))
 
