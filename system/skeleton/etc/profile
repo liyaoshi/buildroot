@@ -8,7 +8,7 @@ if [ "$PS1" ]; then
 	fi
 fi
 
-export PAGER='/bin/more '
+export PAGER='/bin/more'
 export EDITOR='/bin/vi'
 
 # Source configuration files from /etc/profile.d
@@ -19,3 +19,4 @@ for i in /etc/profile.d/*.sh ; do
 	unset i
 done
 export XDG_RUNTIME_DIR=/tmp/weston
+
