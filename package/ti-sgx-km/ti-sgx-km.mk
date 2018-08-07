@@ -23,10 +23,8 @@ else ifeq ($(BR2_PACKAGE_TI_SGX_KM_AM437X),y)
 TI_SGX_KM_PLATFORM_NAME = omap437x
 else ifeq ($(BR2_PACKAGE_TI_SGX_KM_AM4430),y)
 TI_SGX_KM_PLATFORM_NAME = omap4430
-else ifeq ($(BR2_PACKAGE_TI_SGX_AM5430),y)
+else ifeq ($(BR2_PACKAGE_TI_SGX_KM_AM5430),y)
 TI_SGX_KM_PLATFORM_NAME = omap
-else ifeq ($(BR2_PACKAGE_TI_SGX_KM_5430),y)
-TI_SGX_KM_PLATFORM_NAME = omap5430
 endif
 
 TI_SGX_KM_SUBDIR = eurasia_km/eurasiacon/build/linux2/$(TI_SGX_KM_PLATFORM_NAME)_linux
